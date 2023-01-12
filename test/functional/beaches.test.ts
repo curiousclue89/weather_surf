@@ -15,7 +15,7 @@ describe('Beaches functional tests', () => {
       expect(response.status).toBe(201);
       expect(response.body).toEqual(expect.objectContaining(newBeach));
     });
-    it('should return', async() => {
+    it('should return 422 when there is a validation error', async() => {
       const newBeach = {
         lat:'invalid_string',
         lng: 151.289824,
