@@ -1,8 +1,7 @@
 import { StormGlass } from '@src/clients/stormGlass';
+import { BeachPosition, IBeach } from '@src/models/beach';
 import stormGlassNormalizedResponseFixture from '@test/fixtures/stormGlass_normalized_response_3_hours.json';
 import {
-  Beach,
-  BeachPosition,
   Forecast,
   ForecastProcessingInternalError,
 } from '../forecast';
@@ -15,13 +14,12 @@ describe('forecast Service', () => {
     mockedStormGlassService.fetchPoints.mockResolvedValue(
       stormGlassNormalizedResponseFixture
     );
-    const beaches: Beach[] = [
+    const beaches: IBeach[] = [
       {
         lat: -33.792726,
         lng: 151.289824,
         name: 'Manly',
         position: BeachPosition.E,
-        user: 'some-id',
       },
     ];
     const expectedResponse = [
@@ -100,13 +98,12 @@ describe('forecast Service', () => {
   });
 
   it('should throw internal processing error whe something goes wrong during the rating processs', async () => {
-    const beaches: Beach[] = [
+    const beaches: IBeach[] = [
       {
         lat: -33.792726,
         lng: 151.289824,
         name: 'Manly',
         position: BeachPosition.E,
-        user: 'some-id',
       },
     ];
 
