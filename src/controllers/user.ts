@@ -21,7 +21,7 @@ export class UserController extends BaseController {
     }
 
     @Post('authenticate')
-    public async authenticate(req: Request, res: Response): Promise<Response | undefined> {
+    public async authenticate(req: Request, res: Response): Promise<Response> {
         const {email,password} = req.body;
         const user = await User.findOne({email});
         if(!user){
@@ -37,7 +37,7 @@ export class UserController extends BaseController {
             });
         }
         const token = AuthService.generateToken(user.toJSON());
-        res.status(200).send({token: token});
+        return res.send({...user.toJSON(), ...{token}});
     }
 
 }

@@ -52,7 +52,6 @@ export class Forecast {
         });
       }
     }
-
     return forecastByTime;
   }
 
