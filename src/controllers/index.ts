@@ -23,7 +23,7 @@ export abstract class BaseController {
         if(duplicatedKindErrors.length) {
             return {code: 409, error: (error as Error).message}
         }
-        return {code: 422, error: (error as Error).message};
+        return {code: 400, error: (error as Error).message};
         
     }
 }
